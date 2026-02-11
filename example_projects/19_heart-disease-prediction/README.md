@@ -12,6 +12,7 @@ This project predicts whether a patient has heart disease based on clinical indi
 ## 3) Suggested Datasets
 - **UCI Heart Disease Dataset:** Common benchmark with clinical indicators.
 - **Kaggle heart disease datasets:** Public alternatives with similar variables.
+  https://www.kaggle.com/datasets/redwankarimsony/heart-disease-data
 - **Hospital sample data (de-identified):** Real-world local datasets for practical testing.
 
 ## 4) Recommended Models / Methods
