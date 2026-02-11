@@ -1,28 +1,14 @@
-# ml-project-template
+# Machine Learning Project Template & Industry-Based Examples
 
-A complete starter template for Machine Learning bootcamp projects. Use this repository to structure an end-to-end ML workflow from data understanding to model evaluation and reporting.
+A complete starter template for Machine Learning bootcamp projects.
 
----
+## Repository Purpose
 
-## 1) Project Purpose and Objectives
-
-This template helps learners:
-
-- Organize ML work with a clean, reproducible folder structure.
-- Practice the standard workflow: **EDA → Feature Engineering → Modeling → Evaluation → Conclusion**.
-- Separate experimentation (notebooks) from reusable code (`src/`).
-- Keep datasets, saved models, and reports in predictable locations.
-
-By the end of your project, you should be able to:
-
-1. Understand and describe your data.
-2. Build and compare baseline + improved models.
-3. Evaluate performance using suitable metrics.
-4. Summarize findings and next steps in a clear report.
+This repository is both a **Machine Learning project template** and a **reference hub** with ~30 real-world, classical ML example projects for bootcamp participants. You can use the template to structure your own end-to-end workflow, and review the example projects to understand how different industries and problem types are handled in practice.
 
 ---
 
-## 2) How Learners Should Fork and Start
+## 1) How Learners Should Fork and Start
 
 1. Click **Fork** (top-right on GitHub) to create your own copy.
 2. Clone your fork locally:
@@ -52,7 +38,7 @@ By the end of your project, you should be able to:
 
 ---
 
-## 3) Folder Structure
+## 2) Folder Structure
 
 ```text
 ml-project-template/
@@ -78,7 +64,7 @@ ml-project-template/
 
 ---
 
-## 4) Dataset Organization Guidelines
+## 3) Dataset Organization Guidelines
 
 Use a consistent and reproducible data layout:
 
@@ -99,7 +85,160 @@ Recommended workflow:
 
 ---
 
-## 5) Workflow Sections
+## :factory: Industry-Based Machine Learning Project Catalog
+
+All example projects are located under `example_projects/`. Each project includes its own README with the problem definition, dataset details, modeling approach, and evaluation metrics. To make exploration easier, projects are grouped below by **industry** and **ML problem type**.
+
+> Focus area: classical machine learning use cases (no deep learning and no NLP focus).
+
+### A) Retail & E-commerce
+
+#### Classification
+
+- **Customer Satisfaction Prediction** (`example_projects/10_customer-satisfaction-prediction/`) - Predict whether customers are satisfied based on service, product, and transaction-related signals.
+- **Marketing Campaign Response for E-commerce** (`example_projects/13_marketing-campaign-response-prediction/`) - Classify whether a customer is likely to respond to a product or campaign offer.
+
+#### Regression
+
+- **Sales Prediction** (`example_projects/05_sales-forecasting/`) - Estimate sales quantities or revenue values from historical and contextual variables.
+
+#### Time Series & Forecasting
+
+- **Store Item Demand Forecasting** (`example_projects/23_store-item-demand-forecasting/`) - Forecast future item-level demand per store from historical sales patterns.
+- **Retail Sales Forecasting** (`example_projects/05_sales-forecasting/`) - Predict future sales trends over time for planning inventory and operations.
+
+#### Unsupervised / Segmentation
+
+- **Product Recommendation Analysis** (`example_projects/09_product-recommendation/`) - Use behavior patterns to group users/items and support recommendation logic.
+
+### B) Marketing & CRM
+
+#### Classification
+
+- **Customer Churn Prediction** (`example_projects/01_customer-churn-prediction/`) - Predict which customers are likely to churn.
+- **Marketing Campaign Response Prediction** (`example_projects/13_marketing-campaign-response-prediction/`) - Identify customers likely to convert in a campaign.
+
+#### Regression
+
+- **Customer Lifetime Value (CLTV) Prediction** (`example_projects/08_cltv-prediction/`) - Predict expected customer value over a future period.
+
+#### Time Series & Forecasting
+
+- **No dedicated time-series CRM project in the current set**.
+
+#### Unsupervised / Segmentation
+
+- **Customer Segmentation** (`example_projects/03_customer-segmentation/`) - Cluster customers into actionable segments for targeting and personalization.
+
+### C) Finance & Insurance
+
+#### Classification
+
+- **Loan Default Prediction** (`example_projects/15_loan-default-prediction/`) - Predict whether a borrower will default.
+- **Credit Risk Classification** (`example_projects/04_credit-risk-classification/`) - Classify applicants by credit risk category.
+- **Fraud Detection** (`example_projects/07_fraud-detection/`) - Detect suspicious or fraudulent transactions.
+
+#### Regression
+
+- **Insurance Cost Prediction** (`example_projects/20_insurance-cost-prediction/`) - Estimate insurance charges from customer profile and risk factors.
+
+#### Time Series & Forecasting
+
+- **No dedicated finance time-series project in the current set**.
+
+### D) Energy & Utilities
+
+#### Classification
+
+- **No dedicated classification project in the current set**.
+
+#### Regression
+
+- **Solar Power Generation Prediction** (`example_projects/21_solar-power-generation-prediction/`) - Predict generated solar power based on environmental and operational features.
+
+#### Time Series & Forecasting
+
+- **Energy Consumption Forecasting** (`example_projects/14_time-series-energy-consumption/`) - Forecast future energy usage from historical time-series data.
+- **Solar Power Generation Forecasting** (`example_projects/21_solar-power-generation-prediction/`) - Forecast near-term power output for energy planning.
+
+### E) Healthcare
+
+#### Classification
+
+- **Diabetes Prediction** (`example_projects/18_diabetes-prediction/`) - Classify whether a patient is likely to have diabetes.
+- **Heart Disease Prediction** (`example_projects/19_heart-disease-prediction/`) - Predict heart disease risk from clinical indicators.
+
+#### Regression
+
+- **Calorie Intake Prediction** (`example_projects/16_calorie-intake-prediction/`) - Estimate daily calorie intake requirements from individual characteristics.
+
+#### Time Series & Forecasting
+
+- **No dedicated healthcare time-series project in the current set**.
+
+### F) Gaming
+
+#### Classification
+
+- **User Retention / Churn-Like Behavior Prediction** (`example_projects/17_podcast-listening-prediction/`) - Classify whether users are likely to stay active or drop off based on behavior signals.
+
+#### Regression
+
+- **Player Engagement / Activity Prediction (closest behavior-based example)** (`example_projects/17_podcast-listening-prediction/`) - Predict continuous engagement levels such as listening/playtime-like behavior.
+
+#### Time Series & Forecasting
+
+- **No dedicated in-game activity forecasting project in the current set**.
+
+### G) General / Cross-Industry
+
+#### Classification
+
+- **Binary Prediction with Rainfall Dataset** (`example_projects/25_binary-prediction-rainfall/`) - Predict a binary outcome from weather-related features.
+
+#### Regression
+
+- **California House Price Regression** (`example_projects/24_california-house-price-regression/`) - Predict house prices from demographic and location features.
+- **House Price Prediction** (`example_projects/02_house-price-prediction/`) - Build a general-purpose regression model for real estate pricing.
+
+#### Time Series & Forecasting
+
+- **No dedicated cross-industry time-series project in the current set**.
+
+#### Unsupervised / Segmentation
+
+- **Employee Attrition Pattern Exploration** (`example_projects/06_employee-attrition-prediction/`) - Analyze workforce behavior patterns; can be adapted for segmentation and risk grouping.
+
+#### Classification / Regression (Depending on Formulation)
+
+- **Wine Quality Prediction** (`example_projects/22_wine-quality-prediction/`) - Model wine quality as a class label or a numeric score, depending on project framing.
+
+---
+
+## :compass: How Bootcamp Participants Should Use This Repository
+
+- Fork or clone the repository to your own GitHub account.
+- Choose **ONE industry** and **ONE problem type** (Classification, Regression, or Time Series & Forecasting).
+- Use the main template structure (`data/`, `notebooks/`, `src/`, `models/`, `reports/`) for your own work.
+- Do **NOT** submit an example project as your final bootcamp project.
+- Build your own dataset-driven solution and document your decisions clearly.
+
+---
+
+## :white_check_mark: Expectations for Bootcamp Projects
+
+Your final project should include:
+
+- A clear problem definition
+- Exploratory Data Analysis (EDA)
+- Feature engineering
+- At least two models for comparison
+- Proper evaluation metrics aligned with the problem type
+- Business / real-world interpretation of the results
+
+---
+
+## 4) Workflow Sections
 
 ### EDA
 
@@ -129,7 +268,7 @@ Goal: train baseline and improved models.
 Checklist:
 
 - Create train/validation (or train/test) split.
-- Train at least one baseline classifier.
+- Train at least one baseline model for your selected problem type.
 - Track parameters and random seeds for reproducibility.
 
 ### Evaluation
@@ -138,8 +277,8 @@ Goal: quantify model quality and compare alternatives.
 
 Checklist:
 
-- Compute accuracy and ROC-AUC.
-- Inspect confusion matrix and/or ROC curve.
+- Select proper metrics based on task type (classification/regression/forecasting).
+- Visualize and compare model performance.
 - Save metrics to `reports/metrics/`.
 
 ### Conclusion
@@ -154,7 +293,7 @@ Checklist:
 
 ---
 
-## 6) Example Snippets
+## 5) Example Snippets
 
 ### Loading and Cleaning Data
 
@@ -230,7 +369,7 @@ with open("models/baseline_model.pkl", "wb") as f:
 
 ---
 
-## 7) Suggested Next Steps for Learners
+## 6) Suggested Next Steps for Learners
 
 - Add project-specific preprocessing and feature pipelines in `src/`.
 - Track experiments (metrics, parameters, plots) under `reports/`.
