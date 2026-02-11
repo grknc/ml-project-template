@@ -11,6 +11,8 @@ This project predicts customer satisfaction from survey answers and service deta
 
 ## 3) Suggested Datasets
 - **Airline Passenger Satisfaction (Kaggle):** Survey data with service quality features.
+  
+  https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction
 - **Hotel Review / Guest Satisfaction datasets (Kaggle/public):** Ratings and service-related variables.
 - **E-commerce customer feedback datasets:** Order, delivery, and support experience features.
 
