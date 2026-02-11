@@ -1,49 +1,37 @@
-## 1) Project Overview
-House price prediction helps estimate the selling price of a property based on its characteristics. It supports buyers, sellers, and real estate professionals in making better pricing decisions.
+## Project Overview
+House price prediction helps estimate property values based on location, size, quality, and other housing features. Better estimates support buyers, sellers, and real estate professionals when setting prices and planning investments. The goal is to build a model that can predict fair sale prices from structured data.
 
-## 2) Problem Definition
-This is a regression problem. The goal is to predict a continuous value: the house price.
+## Problem Definition
+The project predicts the sale price of a house.
+This is a supervised **regression** problem with a continuous target value.
 
-This problem matters because accurate pricing reduces risk for buyers and sellers. It can also support banks, agents, and investors in planning and decision-making.
+## Datasets
+- **Dataset name:** House Prices: Advanced Regression Techniques
+- **Source:** https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques
+- **Description:** The dataset includes many house characteristics such as lot size, quality, neighborhood, and condition, with final sale prices for training.
 
-## 3) Suggested Datasets
-You can use public housing datasets from platforms like Kaggle.
-
-Useful datasets usually include:
-- Property size and number of rooms
-- Location-related information
-- House age and condition
-- Final sale price
-
-## 4) Recommended Models
-Suitable regression models include:
+## Recommended Models / Methods
+- **Baseline:** Mean price prediction or simple Linear Regression.
 - Linear Regression
-- Ridge and Lasso Regression
+- Ridge / Lasso Regression
 - Decision Tree Regressor
 - Random Forest Regressor
-- Gradient Boosting Regressor (like XGBoost or LightGBM)
+- Gradient Boosting Regressor
 
-You should also analyze feature importance to understand which variables influence price most.
+## Evaluation Metrics
+- **MAE:** Shows average absolute prediction error in price units.
+- **RMSE:** Gives higher penalty to large pricing errors.
+- **R²:** Shows how much price variation is explained by the model.
 
-## 5) Evaluation Metrics
-For house price regression, use:
-- RMSE (Root Mean Squared Error): penalizes large errors more strongly
-- MAE (Mean Absolute Error): easy to interpret average error size
-- R2 (R-squared): shows how much variance in price is explained by the model
-
-Using all three gives a balanced view of model performance.
-
-## 6) Tools & Libraries
-Recommended tools and libraries:
+## Tools & Libraries
 - Python
 - pandas, numpy
 - scikit-learn
 - matplotlib / seaborn
 
-## 7) Expected Deliverables
-Your project outputs should include:
+## Expected Deliverables
 - EDA notebook
-- Feature engineering
-- At least 2 model experiments
+- Feature engineering steps
+- At least two model experiments
 - Model evaluation and comparison
-- Business insights / conclusions
+- Short business or real-world interpretation

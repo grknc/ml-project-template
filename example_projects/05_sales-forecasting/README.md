@@ -1,44 +1,37 @@
-# 05 Sales Forecasting
+## Project Overview
+Sales forecasting helps businesses estimate future demand so they can plan inventory, staffing, and promotions. Reliable forecasts reduce stockouts, lower waste, and improve budget planning. The goal is to model historical sales patterns and predict future sales values.
 
-## 1) Project Overview
-This project predicts future sales for a store, product group, or business unit over time. The goal is to help teams plan inventory, staffing, and promotions with fewer surprises. Sales forecasting is common in retail, e-commerce, and supply chain planning. A strong forecast can reduce stockouts, lower waste, and improve cash flow.
+## Problem Definition
+The project predicts future sales amounts across time periods such as days or weeks.
+This is a **time series forecasting** problem, commonly handled with regression-based methods on time features.
 
-## 2) Problem Definition
-- **What is predicted or analyzed:** Future sales values by day, week, or month.
-- **Target:** A numeric sales amount for each future time period.
-- **Typical stakeholders / business value:** Sales managers, supply chain teams, and finance teams use forecasts for planning and budget control.
+## Datasets
+- **Dataset name:** Walmart Sales Dataset
+- **Source:** https://www.kaggle.com/datasets/yasserh/walmart-dataset/data
+- **Description:** The dataset contains historical Walmart sales records with time-related and store-level variables for forecasting future demand.
 
-## 3) Suggested Datasets
-- **Store Item Demand Forecasting Challenge (Kaggle):** Daily sales by store and item, good for time series practice.
-- **Corporación Favorita Grocery Sales Forecasting (Kaggle):** Real retail-style data with promotions and seasonality.
-- **Rossmann Store Sales (Kaggle):** Store-level daily sales with marketing and holiday effects.
+## Recommended Models / Methods
+- **Baseline:** Naive forecast (last period value) or moving average.
+- Linear Regression with date-based and lag features
+- Random Forest Regressor
+- Gradient Boosting Regressor
+- Time-based cross-validation and lag/rolling feature engineering
 
-## 4) Recommended Models / Methods
-- **Baseline approach:** Naive forecast (for example, last period's value) or simple moving average.
-- Linear Regression with time-based features.
-- Random Forest Regressor or Gradient Boosting Regressor.
-- XGBoost or LightGBM for stronger tabular forecasting performance.
-- Create **lag features** (past sales values) and **rolling statistics** (rolling mean, rolling std).
-- Use a **time-based split** for train/validation (never random split for temporal data).
+## Evaluation Metrics
+- **MAE:** Easy-to-understand average forecast error.
+- **RMSE:** Penalizes larger forecasting errors more strongly.
+- **MAPE or SMAPE:** Useful for relative percentage error comparison.
+- **Backtesting on future windows:** Confirms real forecasting behavior.
 
-## 5) Evaluation Metrics
-- **MAE:** Easy to understand average absolute error in sales units.
-- **RMSE:** Penalizes large errors more strongly than MAE.
-- **MAPE/SMAPE (optional):** Useful when relative error is important across products.
-- Validate on future periods only to simulate real forecasting.
-- Watch for **data leakage**: do not use future information when creating features.
-
-## 6) Tools & Libraries
+## Tools & Libraries
 - Python
 - pandas, numpy
 - scikit-learn
 - matplotlib / seaborn
-- xgboost / lightgbm (optional)
 
-## 7) Expected Deliverables
-- EDA notebook focused on trend, seasonality, and outliers.
-- Feature engineering with calendar, lag, and rolling features.
-- At least 2 experiments (for example, baseline vs tree-based model).
-- Model evaluation and comparison on a time-based validation set.
-- Business insights / conclusions (inventory, campaign timing, planning).
-- Clear README + reproducible steps.
+## Expected Deliverables
+- EDA notebook
+- Feature engineering steps
+- At least two model experiments
+- Model evaluation and comparison
+- Short business or real-world interpretation
