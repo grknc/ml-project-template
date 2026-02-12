@@ -1,49 +1,38 @@
-## 1) Project Overview
-Credit risk classification helps financial institutions decide whether a loan applicant is likely to repay or default. Better risk assessment supports safer lending decisions.
+## Project Overview
+Credit risk classification helps lenders evaluate whether a loan applicant is likely to repay or default. Better risk estimation supports safer lending, reduced losses, and more consistent credit policies. The goal is to build a model that supports responsible and data-driven approval decisions.
 
-## 2) Problem Definition
-This is an imbalanced classification problem. The goal is to predict whether an applicant is low risk or high risk (default risk).
+## Problem Definition
+The project predicts if an applicant belongs to a low-risk or high-risk credit group.
+This is a supervised **classification** problem, often with class imbalance.
 
-This problem matters because wrong lending decisions can create large financial losses. In this context, false negatives are costly: predicting a risky applicant as safe can lead to unpaid loans.
+## Datasets
+- **Dataset name:** Credit Risk Dataset
+- **Source:** https://www.kaggle.com/datasets/laotse/credit-risk-dataset/data
+- **Description:** The dataset includes applicant financial and personal attributes, loan-related variables, and a target label indicating credit risk level.
 
-## 3) Suggested Datasets
-You can use public credit risk datasets from platforms like Kaggle.
-
-Typical datasets include:
-- Applicant income and employment details
-- Credit history and payment behavior
-- Loan amount and term information
-- Target label for default or non-default
-
-## 4) Recommended Models
-Suitable models for credit risk classification include:
+## Recommended Models / Methods
+- **Baseline:** Majority class model or Logistic Regression.
 - Logistic Regression
 - Decision Tree
 - Random Forest
-- Gradient Boosting models (like XGBoost or LightGBM)
+- Gradient Boosting
 - Support Vector Machine
 
-Because the data is imbalanced, consider class weighting or resampling techniques.
+## Evaluation Metrics
+- **Recall:** Critical for identifying risky applicants.
+- **Precision:** Reduces false positive risk flags.
+- **F1-score:** Balances precision and recall.
+- **ROC-AUC:** Evaluates ranking quality across thresholds.
 
-## 5) Evaluation Metrics
-For imbalanced credit risk tasks, focus on:
-- Recall: important for finding as many risky applicants as possible
-- Precision: helps avoid too many false alerts
-- F1-score: balances precision and recall
-
-These metrics are better than accuracy alone in imbalanced settings.
-
-## 6) Tools & Libraries
-Recommended tools and libraries:
+## Tools & Libraries
 - Python
 - pandas, numpy
 - scikit-learn
 - matplotlib / seaborn
 
-## 7) Expected Deliverables
-Your project outputs should include:
+## Expected Deliverables
 - EDA notebook
-- Feature engineering
-- At least 2 model experiments
+- Feature engineering steps
+- At least two model experiments
 - Model evaluation and comparison
-- Business insights / conclusions
+- Short business or real-world interpretation

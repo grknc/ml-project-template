@@ -1,48 +1,37 @@
-## 1) Project Overview
-Customer segmentation helps businesses group customers with similar behaviors or characteristics. These groups help teams create more targeted marketing, pricing, and service strategies.
+## Project Overview
+Customer segmentation helps companies group customers with similar behavior and value patterns. These segments support targeted marketing, personalized offers, and better customer management strategies. The goal is to find meaningful groups that can guide business actions.
 
-## 2) Problem Definition
-This is an unsupervised learning problem. The goal is to analyze customer data and find meaningful groups without predefined labels.
+## Problem Definition
+The project analyzes customer patterns to discover distinct groups.
+This is an **unsupervised learning** problem, usually solved with clustering.
 
-This problem matters because different customers have different needs and value levels. Segmentation helps companies improve campaign effectiveness and customer experience.
+## Datasets
+- **Dataset name:** Customer Segmentation Dataset
+- **Source:** https://www.kaggle.com/datasets/yasserh/customer-segmentation-dataset/data
+- **Description:** The dataset contains customer attributes such as demographics, spending behavior, and engagement-related variables used for clustering.
 
-## 3) Suggested Datasets
-You can use public customer behavior datasets from platforms like Kaggle.
-
-Look for datasets that include:
-- Purchase frequency and spending
-- Product preferences
-- Recency of activity
-- Demographic or channel information
-
-## 4) Recommended Models
-Recommended methods for segmentation include:
-- KMeans
+## Recommended Models / Methods
+- **Baseline:** Rule-based grouping using one or two key variables (for example, spending level).
+- K-Means Clustering
 - Hierarchical Clustering
 - DBSCAN
+- PCA for dimensionality reduction before clustering (optional)
 
-After clustering, perform segment profiling to describe each group clearly and provide business recommendations for actions.
+## Evaluation Metrics
+- **Silhouette Score:** Measures how well each point fits its cluster.
+- **Davies-Bouldin Index:** Evaluates cluster compactness and separation.
+- **Calinski-Harabasz Score:** Compares between-cluster and within-cluster dispersion.
+- **Business interpretability:** Ensures segments are useful for real decisions.
 
-## 5) Evaluation Metrics
-In unsupervised learning, use both quantitative and business-focused evaluation:
-- Silhouette Score: checks how well each point fits its cluster
-- Davies-Bouldin Index: compares cluster separation and compactness
-- Cluster size distribution: ensures segments are practical and balanced
-- Business interpretability: confirms segments are useful for real decisions
-
-Good segmentation is not only mathematically strong but also actionable for the business.
-
-## 6) Tools & Libraries
-Recommended tools and libraries:
+## Tools & Libraries
 - Python
 - pandas, numpy
 - scikit-learn
 - matplotlib / seaborn
 
-## 7) Expected Deliverables
-Your project outputs should include:
+## Expected Deliverables
 - EDA notebook
-- Feature engineering
-- At least 2 model experiments
+- Feature engineering steps
+- At least two model experiments
 - Model evaluation and comparison
-- Business insights / conclusions
+- Short business or real-world interpretation
