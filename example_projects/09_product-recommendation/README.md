@@ -1,43 +1,39 @@
-# 09 Product Recommendation
+## Project Overview
+Recommendation systems help digital platforms improve user engagement and conversion by showing relevant items. This project uses MovieLens interactions to build and compare collaborative filtering approaches. The goal is to generate useful top-K recommendations with clear offline evaluation.
 
-## 1) Project Overview
-This project builds a basic recommender system to suggest products a user may like. Recommendation systems are used in e-commerce, streaming, and content platforms to increase engagement and sales. The goal is to generate useful top-K suggestions from historical user-item interactions. A simple and clear baseline recommender is a strong first step before advanced deep learning approaches.
+## Problem Definition
+Target: produce a ranked list of items for each user rather than a single class label. This is a **recommender systems** problem centered on collaborative filtering. The project should model the user-item interaction matrix and compare recommendation quality across methods.
 
-## 2) Problem Definition
-- **What is predicted or analyzed:** User preference for items based on interaction history.
-- **Target:** Ranked list of top-K recommended items per user (not a single numeric target).
-- **Typical stakeholders / business value:** Product teams, growth teams, and merchandising teams use recommendations to improve conversion and user satisfaction.
-- **Common challenges:** Cold start for new users or new products with little interaction data.
+## Datasets
+- **Name:** MovieLens 20M Dataset
+- **Source:** <https://www.kaggle.com/datasets/grouplens/movielens-20m-dataset>
+- Contains user-item interactions (ratings/timestamps) for large-scale recommendation experiments.
+- Supports construction of a sparse user-item interaction matrix.
+- Enables offline top-K evaluation with train/test splits.
 
-## 3) Suggested Datasets
-- **MovieLens (GroupLens):** Classic user-item rating data for collaborative filtering.
-- **Amazon Product Reviews (Kaggle/public variants):** Large-scale interaction and rating data.
-- **Instacart Market Basket Analysis (Kaggle):** Basket-style purchase history for item-based patterns.
+## Recommended Models / Methods
+- **Baseline:** popularity-based recommender (most popular items).
+- User-based collaborative filtering using user similarity.
+- Item-based collaborative filtering using item similarity.
+- Matrix factorization methods as a conceptual next step for latent preferences.
+- Compare methods under the same offline evaluation setup.
 
-## 4) Recommended Models / Methods
-- **Baseline approach:** Popularity-based recommendation (most interacted items).
-- User-based collaborative filtering.
-- Item-based collaborative filtering.
-- Cosine similarity for user-user or item-item similarity.
-- Generate and evaluate **top-K** recommendation lists.
+## Evaluation Metrics
+- **Precision@K:** relevance quality within recommended top-K items.
+- **Recall@K:** coverage of relevant items in the top-K list.
+- **MAP@K or NDCG@K (optional):** ranking quality beyond simple hit counting.
+- Evaluate with consistent offline protocol to ensure fair method comparison.
 
-## 5) Evaluation Metrics
-- **Precision@K:** Measures relevance quality within the top-K list.
-- **Recall@K:** Measures how many relevant items are recovered in top-K.
-- Use offline validation with train/test interaction splits by user and time when possible.
-- Compare at least two recommendation methods under the same offline setting.
-
-## 6) Tools & Libraries
+## Tools & Libraries
 - Python
 - pandas, numpy
 - scikit-learn
 - matplotlib / seaborn
-- xgboost / lightgbm (optional, for hybrid ranking extensions)
+- scipy / surprise (optional for recommender workflows)
 
-## 7) Expected Deliverables
-- EDA notebook on user-item interactions and sparsity.
-- Feature engineering or interaction matrix preparation.
-- At least 2 methods (for example, popularity baseline vs item-based CF).
-- Model evaluation and comparison using Precision@K / Recall@K.
-- Business insights / conclusions on engagement and conversion potential.
-- Clear README + reproducible steps.
+## Expected Deliverables
+- EDA notebook for user-item interactions and sparsity patterns.
+- Interaction matrix preparation and feature preprocessing.
+- At least two recommendation method experiments, including popularity baseline.
+- Evaluation and comparison with top-K metrics.
+- Short business interpretation and recommendations for product/content strategy.

@@ -1,43 +1,38 @@
-# 08 CLTV Prediction
+## Project Overview
+Customer Lifetime Value (CLTV) prediction helps businesses allocate marketing and retention budgets more effectively. This project estimates future customer value using transaction history and customer-level features. The goal is to support segmentation, campaign prioritization, and better revenue planning.
 
-## 1) Project Overview
-This project estimates Customer Lifetime Value (CLTV), which is the expected future value of a customer. The goal is to support smarter marketing, retention, and budget allocation decisions. By predicting CLTV, teams can focus on high-value segments and improve campaign efficiency. The project can combine practical regression modeling with customer analytics thinking.
+## Problem Definition
+Target: predict future customer value over a defined horizon. This is mainly a **regression** task, with an optional **probabilistic CLTV** perspective for customer behavior modeling. The project should provide interpretable outputs and segment-level business insights.
 
-## 2) Problem Definition
-- **What is predicted or analyzed:** Future customer value over a chosen time horizon.
-- **Target:** Numeric CLTV value (regression) or value segments based on expected contribution.
-- **Typical stakeholders / business value:** Marketing, CRM, and finance teams use CLTV to prioritize campaigns and manage acquisition/retention spend.
-- **Important note:** Insights from CLTV can directly influence budget planning and channel strategy.
+## Datasets
+- **Name:** Online Retail II (UCI)
+- **Source:** <https://www.kaggle.com/datasets/mashlyn/online-retail-ii-uci>
+- Contains transaction-level retail data including invoice, quantity, price, and customer identifiers.
+- Enables creation of customer-level features such as recency, frequency, and monetary value.
+- Supports CLTV modeling through aggregated features and segment analysis.
 
-## 3) Suggested Datasets
-- **Online Retail II (UCI):** Transaction-level data often used for RFM and CLTV work.
-- **E-Commerce Behavior Data (Kaggle variants):** Useful for building customer-level purchase features.
-- **Customer Personality Analysis (Kaggle):** Includes campaign response and customer profile variables.
+## Recommended Models / Methods
+- **Baseline:** simple historical average spend or linear regression baseline.
+- Regression models such as Linear Regression, Random Forest Regressor, and Gradient Boosting Regressor.
+- Build robust customer-level features from transaction data before training.
+- Optionally mention probabilistic CLTV methods conceptually (BG/NBD + Gamma-Gamma).
+- Compare segment-level patterns to validate business usefulness.
 
-## 4) Recommended Models / Methods
-- **Baseline approach:** Simple average historical spend per customer.
-- Feature-based regression (Linear Regression, Random Forest Regressor, Gradient Boosting).
-- XGBoost or LightGBM for non-linear customer value patterns.
-- Optional concept method: probabilistic CLV with **BG/NBD + Gamma-Gamma**.
-- Use customer-level features such as recency, frequency, monetary value, tenure, and engagement.
+## Evaluation Metrics
+- **MAE:** clear average absolute error for business interpretation.
+- **RMSE:** gives higher penalty to large prediction errors.
+- Segment-level evaluation (for example, low/medium/high value groups) to check practical decision quality.
+- Use metric comparison together with segment insights, not only a single score.
 
-## 5) Evaluation Metrics
-- **MAE / RMSE:** Core regression metrics for absolute and large-error sensitivity.
-- Compare model quality across customer segments (for example, low/mid/high value groups).
-- Segment-level validation helps check if predictions are useful for business actions.
-- Also evaluate whether model-based targeting improves expected marketing ROI.
-
-## 6) Tools & Libraries
+## Tools & Libraries
 - Python
 - pandas, numpy
 - scikit-learn
 - matplotlib / seaborn
-- xgboost / lightgbm (optional)
 
-## 7) Expected Deliverables
-- EDA notebook on purchase behavior, RFM patterns, and segment differences.
-- Feature engineering at customer level from transaction history.
-- At least 2 experiments (for example, linear baseline vs boosted model).
-- Model evaluation and comparison with segment-level analysis.
-- Business insights / conclusions for marketing and budget decisions.
-- Clear README + reproducible steps.
+## Expected Deliverables
+- EDA notebook on transaction behavior and customer segments.
+- Customer-level feature engineering from transactional records.
+- At least two model/method experiments, including a baseline.
+- Evaluation and comparison using MAE/RMSE plus segment-level checks.
+- Short business interpretation with CLTV-based recommendations.
