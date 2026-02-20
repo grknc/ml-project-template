@@ -5,3 +5,5 @@ matplotlib
 seaborn
 joblib
 jupyter
+pytest
+pytest-cov
