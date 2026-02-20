@@ -4,7 +4,7 @@ A complete starter template for Machine Learning bootcamp projects.
 
 ## Repository Purpose
 
-This repository is both a **Machine Learning project template** and a **reference hub** with ~30 real-world, classical ML example projects for bootcamp participants. You can use the template to structure your own end-to-end workflow, and review the example projects to understand how different industries and problem types are handled in practice.
+This repository is both a **Machine Learning project template** and a **reference hub** with 25 real-world, classical ML example projects for bootcamp participants. Use the template to structure your own end-to-end workflow, and review the example projects to understand how different industries and problem types are handled in practice.
 
 ---
 
@@ -22,7 +22,7 @@ This repository is both a **Machine Learning project template** and a **referenc
 
    ```bash
    python -m venv .venv
-   source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
+   source .venv/bin/activate  # Windows: .venv\Scripts\activate
    ```
 
 4. Install dependencies:
@@ -44,6 +44,7 @@ This repository is both a **Machine Learning project template** and a **referenc
 ml-project-template/
 ├── README.md
 ├── requirements.txt
+├── pytest.ini                  # Test configuration
 ├── data/
 │   ├── raw/                    # Original immutable source data
 │   └── processed/              # Cleaned/transformed data for modeling
@@ -52,21 +53,29 @@ ml-project-template/
 │   ├── 02_feature_engineering.ipynb
 │   └── 03_modeling_evaluation.ipynb
 ├── src/
-│   ├── data_preprocessing.py
-│   ├── feature_engineering.py
-│   ├── train.py
-│   └── evaluate.py
-├── models/                     # Saved models (*.joblib, *.pkl)
+│   ├── data_preprocessing.py   # load → clean → save pipeline
+│   ├── feature_engineering.py  # ColumnTransformer builder
+│   ├── train.py                # model training & saving
+│   └── evaluate.py             # metrics & reporting
+├── tests/
+│   ├── conftest.py
+│   ├── test_data_preprocessing.py
+│   ├── test_feature_engineering.py
+│   ├── test_train.py
+│   └── test_evaluate.py
+├── example_projects/           # 25 industry-based ML examples
+│   └── <project>/
+│       ├── README.md
+│       └── starter_notebook.ipynb
+├── models/                     # Saved models (*.joblib)
 └── reports/
     ├── figures/                # Plots and visual outputs
-    └── metrics/                # Evaluation summaries (CSV/JSON/TXT)
+    └── metrics/                # Evaluation summaries (JSON/CSV)
 ```
 
 ---
 
 ## 3) Dataset Organization Guidelines
-
-Use a consistent and reproducible data layout:
 
 - Put untouched source files in `data/raw/`.
 - Write cleaned or engineered datasets to `data/processed/`.
@@ -80,147 +89,112 @@ Recommended workflow:
 
 1. Load from `data/raw/`.
 2. Validate schema and missing values.
-3. Clean + transform data.
-4. Save processed output to `data/processed/`.
+3. Clean + transform → save to `data/processed/`.
+4. Train and evaluate from `data/processed/`.
+
+---
+
+## 4) Running the Pipeline
+
+Each `src/` module can be run standalone in sequence:
+
+```bash
+python src/data_preprocessing.py   # raw → data/processed/sample_clean.csv
+python src/train.py                # processed CSV → models/baseline_model.joblib
+                                   #               + models/preprocessor.joblib
+                                   #               + reports/metrics/baseline_metrics.json
+python src/evaluate.py             # reload model → print metrics
+```
+
+---
+
+## 5) Running Tests
+
+```bash
+python -m pytest tests/
+```
+
+The suite covers all `src/` modules with 100% coverage (excluding CLI `__main__` blocks).
 
 ---
 
 ## :factory: Industry-Based Machine Learning Project Catalog
 
-All example projects are located under `example_projects/`. Each project includes its own README with the problem definition, dataset details, modeling approach, and evaluation metrics. To make exploration easier, projects are grouped below by **industry** and **ML problem type**.
-
-> Focus area: classical machine learning use cases (no deep learning and no NLP focus).
+All 25 example projects are in `example_projects/`. Each project includes a `README.md` (problem definition, dataset, recommended models, metrics) and a `starter_notebook.ipynb` ready to run after downloading the dataset.
 
 ### A) Retail & E-commerce
 
-#### Classification
-
-- **Customer Satisfaction Prediction** (`example_projects/10_customer-satisfaction-prediction/`) - Predict whether customers are satisfied based on service, product, and transaction-related signals.
-- **Marketing Campaign Response for E-commerce** (`example_projects/13_marketing-campaign-response-prediction/`) - Classify whether a customer is likely to respond to a product or campaign offer.
-
-#### Regression
-
-- **Sales Prediction** (`example_projects/05_sales-forecasting/`) - Estimate sales quantities or revenue values from historical and contextual variables.
-
-#### Time Series & Forecasting
-
-- **Store Item Demand Forecasting** (`example_projects/23_store-item-demand-forecasting/`) - Forecast future item-level demand per store from historical sales patterns.
-- **Retail Sales Forecasting** (`example_projects/05_sales-forecasting/`) - Predict future sales trends over time for planning inventory and operations.
-
-#### Unsupervised / Segmentation
-
-- **Product Recommendation Analysis** (`example_projects/09_product-recommendation/`) - Use behavior patterns to group users/items and support recommendation logic.
+| # | Project | Type |
+|---|---|---|
+| 10 | [Customer Satisfaction Prediction](example_projects/10_customer-satisfaction-prediction/) | Classification |
+| 05 | [Sales Forecasting (Walmart)](example_projects/05_sales-forecasting/) | Time Series |
+| 23 | [Store Item Demand Forecasting](example_projects/23_store-item-demand-forecasting/) | Time Series |
+| 09 | [Product Recommendation (MovieLens)](example_projects/09_product-recommendation/) | Recommender System |
 
 ### B) Marketing & CRM
 
-#### Classification
-
-- **Customer Churn Prediction** (`example_projects/01_customer-churn-prediction/`) - Predict which customers are likely to churn.
-- **Marketing Campaign Response Prediction** (`example_projects/13_marketing-campaign-response-prediction/`) - Identify customers likely to convert in a campaign.
-
-#### Regression
-
-- **Customer Lifetime Value (CLTV) Prediction** (`example_projects/08_cltv-prediction/`) - Predict expected customer value over a future period.
-
-#### Time Series & Forecasting
-
-- **No dedicated time-series CRM project in the current set**.
-
-#### Unsupervised / Segmentation
-
-- **Customer Segmentation** (`example_projects/03_customer-segmentation/`) - Cluster customers into actionable segments for targeting and personalization.
+| # | Project | Type |
+|---|---|---|
+| 01 | [Customer Churn Prediction](example_projects/01_customer-churn-prediction/) | Classification |
+| 13 | [Marketing Campaign Response](example_projects/13_marketing-campaign-response-prediction/) | Classification |
+| 08 | [Customer Lifetime Value (CLTV)](example_projects/08_cltv-prediction/) | Regression |
+| 03 | [Customer Segmentation](example_projects/03_customer-segmentation/) | Clustering |
 
 ### C) Finance & Insurance
 
-#### Classification
-
-- **Loan Default Prediction** (`example_projects/15_loan-default-prediction/`) - Predict whether a borrower will default.
-- **Credit Risk Classification** (`example_projects/04_credit-risk-classification/`) - Classify applicants by credit risk category.
-- **Fraud Detection** (`example_projects/07_fraud-detection/`) - Detect suspicious or fraudulent transactions.
-
-#### Regression
-
-- **Insurance Cost Prediction** (`example_projects/20_insurance-cost-prediction/`) - Estimate insurance charges from customer profile and risk factors.
-
-#### Time Series & Forecasting
-
-- **No dedicated finance time-series project in the current set**.
+| # | Project | Type |
+|---|---|---|
+| 04 | [Credit Risk Classification](example_projects/04_credit-risk-classification/) | Classification |
+| 07 | [Credit Card Fraud Detection](example_projects/07_fraud-detection/) | Classification (imbalanced) |
+| 15 | [Loan Default Prediction](example_projects/15_loan-default-prediction/) | Classification |
+| 20 | [Insurance Cost Prediction](example_projects/20_insurance-cost-prediction/) | Regression |
 
 ### D) Energy & Utilities
 
-#### Classification
-
-- **No dedicated classification project in the current set**.
-
-#### Regression
-
-- **Solar Power Generation Prediction** (`example_projects/21_solar-power-generation-prediction/`) - Predict generated solar power based on environmental and operational features.
-
-#### Time Series & Forecasting
-
-- **Energy Consumption Forecasting** (`example_projects/14_time-series-energy-consumption/`) - Forecast future energy usage from historical time-series data.
-- **Solar Power Generation Forecasting** (`example_projects/21_solar-power-generation-prediction/`) - Forecast near-term power output for energy planning.
+| # | Project | Type |
+|---|---|---|
+| 14 | [Energy Consumption Forecasting](example_projects/14_time-series-energy-consumption/) | Time Series |
+| 21 | [Solar Power Generation Forecasting](example_projects/21_solar-power-generation-prediction/) | Time Series |
 
 ### E) Healthcare
 
-#### Classification
+| # | Project | Type |
+|---|---|---|
+| 18 | [Diabetes Risk Prediction](example_projects/18_diabetes-prediction/) | Classification |
+| 19 | [Heart Disease Prediction](example_projects/19_heart-disease-prediction/) | Classification |
+| 16 | [Calorie Expenditure Prediction](example_projects/16_calorie-intake-prediction/) | Regression |
 
-- **Diabetes Prediction** (`example_projects/18_diabetes-prediction/`) - Classify whether a patient is likely to have diabetes.
-- **Heart Disease Prediction** (`example_projects/19_heart-disease-prediction/`) - Predict heart disease risk from clinical indicators.
+### F) HR & Workforce
 
-#### Regression
+| # | Project | Type |
+|---|---|---|
+| 06 | [Employee Attrition Prediction](example_projects/06_employee-attrition-prediction/) | Classification |
 
-- **Calorie Intake Prediction** (`example_projects/16_calorie-intake-prediction/`) - Estimate daily calorie intake requirements from individual characteristics.
+### G) Media & Entertainment
 
-#### Time Series & Forecasting
+| # | Project | Type |
+|---|---|---|
+| 11 | [Movie Review Sentiment Analysis](example_projects/11_movie-review-sentiment-analysis/) | Text Classification |
+| 12 | [Email / SMS Spam Detection](example_projects/12_email-spam-classification/) | Text Classification |
+| 17 | [Podcast Listening Time Prediction](example_projects/17_podcast-listening-prediction/) | Regression |
 
-- **No dedicated healthcare time-series project in the current set**.
+### H) General / Cross-Industry
 
-### F) Gaming
-
-#### Classification
-
-- **User Retention / Churn-Like Behavior Prediction** (`example_projects/17_podcast-listening-prediction/`) - Classify whether users are likely to stay active or drop off based on behavior signals.
-
-#### Regression
-
-- **Player Engagement / Activity Prediction (closest behavior-based example)** (`example_projects/17_podcast-listening-prediction/`) - Predict continuous engagement levels such as listening/playtime-like behavior.
-
-#### Time Series & Forecasting
-
-- **No dedicated in-game activity forecasting project in the current set**.
-
-### G) General / Cross-Industry
-
-#### Classification
-
-- **Binary Prediction with Rainfall Dataset** (`example_projects/25_binary-prediction-rainfall/`) - Predict a binary outcome from weather-related features.
-
-#### Regression
-
-- **California House Price Regression** (`example_projects/24_california-house-price-regression/`) - Predict house prices from demographic and location features.
-- **House Price Prediction** (`example_projects/02_house-price-prediction/`) - Build a general-purpose regression model for real estate pricing.
-
-#### Time Series & Forecasting
-
-- **No dedicated cross-industry time-series project in the current set**.
-
-#### Unsupervised / Segmentation
-
-- **Employee Attrition Pattern Exploration** (`example_projects/06_employee-attrition-prediction/`) - Analyze workforce behavior patterns; can be adapted for segmentation and risk grouping.
-
-#### Classification / Regression (Depending on Formulation)
-
-- **Wine Quality Prediction** (`example_projects/22_wine-quality-prediction/`) - Model wine quality as a class label or a numeric score, depending on project framing.
+| # | Project | Type |
+|---|---|---|
+| 02 | [House Price Prediction](example_projects/02_house-price-prediction/) | Regression |
+| 24 | [California Housing Price Regression](example_projects/24_california-house-price-regression/) | Regression |
+| 22 | [Wine Quality Prediction](example_projects/22_wine-quality-prediction/) | Classification |
+| 25 | [Binary Rainfall Prediction](example_projects/25_binary-prediction-rainfall/) | Classification |
 
 ---
 
 ## :compass: How Bootcamp Participants Should Use This Repository
 
 - Fork or clone the repository to your own GitHub account.
-- Choose **ONE industry** and **ONE problem type** (Classification, Regression, or Time Series & Forecasting).
+- Choose **ONE industry** and **ONE problem type** (Classification, Regression, or Time Series).
 - Use the main template structure (`data/`, `notebooks/`, `src/`, `models/`, `reports/`) for your own work.
-- Do **NOT** submit an example project as your final bootcamp project.
+- Use `example_projects/<project>/starter_notebook.ipynb` as reference — do **not** submit an example project as your final work.
 - Build your own dataset-driven solution and document your decisions clearly.
 
 ---
@@ -238,7 +212,7 @@ Your final project should include:
 
 ---
 
-## 4) Workflow Sections
+## 6) Workflow Sections
 
 ### EDA
 
@@ -256,10 +230,10 @@ Goal: build model-ready inputs.
 
 Checklist:
 
-- Define numeric/categorical feature groups.
-- Handle missing values.
-- Encode categorical features.
-- Scale or normalize numeric features where appropriate.
+- Define numeric/categorical/boolean feature groups.
+- Handle missing values (median for numeric, mode for categorical).
+- Encode categorical features with `OneHotEncoder`.
+- Scale numeric features where appropriate.
 
 ### Modeling
 
@@ -267,8 +241,8 @@ Goal: train baseline and improved models.
 
 Checklist:
 
-- Create train/validation (or train/test) split.
-- Train at least one baseline model for your selected problem type.
+- Create train/test split (`stratify=y` for classification).
+- Wrap preprocessing + model in a `sklearn.Pipeline`.
 - Track parameters and random seeds for reproducibility.
 
 ### Evaluation
@@ -277,8 +251,8 @@ Goal: quantify model quality and compare alternatives.
 
 Checklist:
 
-- Select proper metrics based on task type (classification/regression/forecasting).
-- Visualize and compare model performance.
+- Select proper metrics: ROC-AUC / F1 (classification), MAE / RMSE / R² (regression), MAPE (time series).
+- For imbalanced datasets, prefer Recall, F1, and PR-AUC over Accuracy.
 - Save metrics to `reports/metrics/`.
 
 ### Conclusion
@@ -287,93 +261,90 @@ Goal: communicate findings and next steps.
 
 Checklist:
 
-- Summarize best-performing model.
+- Summarize best-performing model and key metric.
 - Highlight limitations and assumptions.
-- Suggest concrete improvements and deployment considerations.
+- Suggest concrete improvements (hyperparameter tuning, more data, feature ideas).
 
 ---
 
-## 5) Example Snippets
+## 7) Example Snippets
 
 ### Loading and Cleaning Data
 
 ```python
-import pandas as pd
+# Using the src/ module directly:
+from src.data_preprocessing import load_raw_data, clean_data, save_processed_data
 
-# Load raw dataset
-df = pd.read_csv("data/raw/your_dataset.csv")
-
-# Basic cleaning
-# TODO: customize for your dataset
-
-df = df.drop_duplicates()
-df.columns = [c.strip().lower() for c in df.columns]
-
-# Example missing-value handling
-for col in df.select_dtypes(include=["number"]).columns:
-    df[col] = df[col].fillna(df[col].median())
-
-for col in df.select_dtypes(exclude=["number"]).columns:
-    df[col] = df[col].fillna("unknown")
-
-# Save processed file
-df.to_csv("data/processed/clean_dataset.csv", index=False)
+df = load_raw_data("data/raw/your_dataset.csv")  # also supports .xlsx, .json, .parquet
+df = clean_data(df)
+save_processed_data(df, "data/processed/clean_dataset.csv")
 ```
 
 ### Training a Classification Model
 
 ```python
+import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 
-# TODO: replace 'target' with your target column name
-X = df.drop(columns=["target"])
-y = df["target"]
+# Import src/ module
+import sys; sys.path.insert(0, "src")
+from feature_engineering import build_preprocessor
+
+df = pd.read_csv("data/processed/clean_dataset.csv")
+TARGET = "target"  # replace with your column name
+
+X = df.drop(columns=[TARGET])
+y = df[TARGET]
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
 
-model = LogisticRegression(max_iter=1000)
+model = Pipeline([
+    ("preprocessor", build_preprocessor(X_train)),
+    ("clf", LogisticRegression(max_iter=1000, class_weight="balanced")),
+])
 model.fit(X_train, y_train)
 ```
 
-### Evaluation with Accuracy and ROC-AUC
+### Evaluation
 
 ```python
-from sklearn.metrics import accuracy_score, roc_auc_score
+from sklearn.metrics import classification_report, roc_auc_score
 
 preds = model.predict(X_test)
-probs = model.predict_proba(X_test)[:, 1]  # for binary classification
+probs = model.predict_proba(X_test)
 
-accuracy = accuracy_score(y_test, preds)
-roc_auc = roc_auc_score(y_test, probs)
+# Binary
+roc_auc = roc_auc_score(y_test, probs[:, 1])
 
-print(f"Accuracy: {accuracy:.4f}")
+# Multiclass
+# roc_auc = roc_auc_score(y_test, probs, multi_class="ovr", average="macro")
+
 print(f"ROC-AUC: {roc_auc:.4f}")
+print(classification_report(y_test, preds))
 ```
 
-### Saving a Trained Model (joblib or pickle)
+### Saving a Trained Model
 
 ```python
 import joblib
-import pickle
 
-# Option 1: joblib (recommended for many sklearn objects)
 joblib.dump(model, "models/baseline_model.joblib")
 
-# Option 2: pickle
-with open("models/baseline_model.pkl", "wb") as f:
-    pickle.dump(model, f)
+# Reload later:
+# loaded = joblib.load("models/baseline_model.joblib")
 ```
 
 ---
 
-## 6) Suggested Next Steps for Learners
+## 8) Suggested Next Steps for Learners
 
 - Add project-specific preprocessing and feature pipelines in `src/`.
 - Track experiments (metrics, parameters, plots) under `reports/`.
-- Refactor notebook code into reusable functions/modules.
-- Add tests and CI once your project scope is stable.
+- Refactor notebook code into reusable functions/modules in `src/`.
+- Write tests for your modules using `pytest`.
 
 Happy building 🚀
